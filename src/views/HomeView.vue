@@ -1,9 +1,9 @@
 <template>
   <section class="w-full h-full flex justify-center items-center">
     <div
-      class="bg-gray-100 p-[20px] mt-[50px] flex flex-col items-center rounded-[12px] min-w-[300px] shadow-md"
+      class="bg-gray-100 text-[20px] p-[20px] mt-[50px] flex flex-col items-center rounded-[12px] w-[300px] shadow-md"
     >
-      <p class="font-[500] text-center mb-[5px]">КУРСЫ ВАЛЮТ</p>
+      <h2 class="text-[25px] font-bold mb-4 text-center">Курсы валют</h2>
       <p v-if="isLoading">Загрузка...</p>
       <ul v-else>
         <li
