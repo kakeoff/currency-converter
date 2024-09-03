@@ -1,8 +1,13 @@
 import { defineStore } from "pinia";
+import * as api from "../services/neuralGeneration.service";
+import { ExchangeRatesResponse } from "../services/types/neuralGeneration";
 import { CurrencyEnum } from "../types";
 
 export const useCurrencyStore = defineStore("currency", {
-  state: () => ({ mainCurrency: CurrencyEnum.USD }),
+  state: () => ({
+    mainCurrency: CurrencyEnum.USD,
+    exchangeRates: null as ExchangeRatesResponse | null,
+  }),
   actions: {
     setMainCurrency(val: CurrencyEnum) {
       this.mainCurrency = val;
@@ -13,6 +18,10 @@ export const useCurrencyStore = defineStore("currency", {
         "mainCurrency"
       ) as CurrencyEnum | null;
       this.mainCurrency = storedVal ? storedVal : CurrencyEnum.USD;
+    },
+    async fetchCurrency() {
+      const data: ExchangeRatesResponse = await api.fetchCurrency();
+      this.exchangeRates = data;
     },
   },
 });

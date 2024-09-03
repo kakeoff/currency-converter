@@ -13,12 +13,12 @@ import { computed } from "vue";
 const currencyStore = useCurrencyStore();
 
 const mainCurrency: ComputedRef<CurrencyEnum> = computed(() => {
-  console.log(currencyStore.mainCurrency);
   return currencyStore.mainCurrency;
 });
 
 onMounted(() => {
   currencyStore.getMainCurrency();
+  currencyStore.fetchCurrency();
 });
 
 const setMainCurrency = (val: CurrencyEnum) => {
