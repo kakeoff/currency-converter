@@ -128,7 +128,7 @@ const isValidNumber = (value: string | number): boolean => {
     const trimmedValue = value.trim();
     return (
       trimmedValue === "" ||
-      (!isNaN(parseFloat(trimmedValue)) && isFinite(parseFloat(trimmedValue)))
+      (!isNaN(Number(trimmedValue)) && isFinite(Number(trimmedValue)))
     );
   } else if (typeof value === "number") {
     return !isNaN(value) && isFinite(value);
